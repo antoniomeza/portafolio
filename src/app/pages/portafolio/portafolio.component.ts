@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ProductosService } from '../../services/productos.service';
+import { ProductosIdxInterface } from 'src/app/interfaces/productos_idx.interface';
 
 @Component({
   selector: 'app-portafolio',
   templateUrl: './portafolio.component.html',
-  styleUrls: ['./portafolio.component.css']
 })
-export class PortafolioComponent implements OnInit {
+export class PortafolioComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  get productos_idx(): ProductosIdxInterface[] {
+    return this.productosService.productos_idx
   }
+
+  get cargando_productos(): boolean {
+    return this.productosService.cargando_productos
+  }
+
+  constructor(
+    private productosService: ProductosService
+  ) { }
 
 }
